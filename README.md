@@ -1,70 +1,196 @@
-# Getting Started with Create React App
+# MUI to Tailwind Converter
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Un outil de conversion en temps réel pour transformer les composants Material-UI (MUI) en classes Tailwind CSS.
 
-## Available Scripts
+## 🌟 Développé par
+- [Ayina Maerik](https://www.linkedin.com/in/ayinamaerik/)
+- [Tresor Manock](https://www.linkedin.com/in/tr%C3%A9sormanock/)
 
-In the project directory, you can run:
+## 📖 Table des matières
+- [Aperçu](#aperçu)
+- [Fonctionnalités](#fonctionnalités)
+- [Installation](#installation)
+- [Structure du projet](#structure-du-projet)
+- [Guide technique](#guide-technique)
+- [Composants pris en charge](#composants-pris-en-charge)
+- [Contribution](#contribution)
+- [Limitations connues](#limitations-connues)
+- [Roadmap](#roadmap)
 
-### `npm start`
+## 🎯 Aperçu
+Ce projet permet aux développeurs de convertir facilement leur code Material-UI en classes Tailwind CSS équivalentes. L'outil offre une interface interactive avec prévisualisation en temps réel.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ✨ Fonctionnalités
+- Conversion en temps réel
+- Prévisualisation du résultat
+- Support des composants MUI courants
+- Interface responsive
+- Animations fluides avec Framer Motion
+- Copie rapide du code converti
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🚀 Installation
 
-### `npm test`
+```bash
+# Cloner le repository
+git clone https://github.com/votre-username/mui-to-tailwind.git
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Accéder au répertoire
+cd mui-to-tailwind
 
-### `npm run build`
+# Installer les dépendances
+npm install
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Lancer l'application
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Dépendances principales
+```json
+{
+  "dependencies": {
+    "@monaco-editor/react": "^4.4.6",
+    "framer-motion": "^6.0.0",
+    "@tailwindcss/typography": "^2.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 📁 Structure du projet
 
-### `npm run eject`
+```
+src/
+├── components/
+│   ├── CodeConverter.jsx    # Composant principal de conversion
+│   ├── ComponentsList.jsx   # Liste des composants supportés
+│   └── Preview.jsx         # Prévisualisation du code converti
+├── utils/
+│   ├── componentMappings.js # Mappings MUI vers Tailwind
+│   ├── converter.js        # Logique de conversion
+│   ├── dynamicStyles.js    # Gestion des styles dynamiques
+│   └── propHandlers.js     # Gestion des props complexes
+├── styles/
+│   └── App.css            # Styles globaux
+└── App.jsx                # Point d'entrée de l'application
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🔧 Guide technique
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Configuration Tailwind
+```javascript
+// tailwind.config.js
+module.exports = {
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  theme: {
+    extend: {
+      // Configurations personnalisées
+    }
+  },
+  plugins: [
+    require('@tailwindcss/typography')
+  ],
+  // Liste des classes safelist
+}
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Ajout de nouveaux composants
+Pour ajouter le support d'un nouveau composant MUI :
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. Mettre à jour `componentMappings.js` :
+```javascript
+export const componentMappings = {
+  NouveauComposant: {
+    prop: {
+      value: 'classes-tailwind-correspondantes'
+    }
+  }
+}
+```
 
-## Learn More
+2. Ajouter le mapping HTML dans `htmlMappings.js` :
+```javascript
+export const htmlMappings = {
+  NouveauComposant: 'element-html-equivalent'
+}
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Gestion des styles dynamiques
+Les styles dynamiques sont gérés via `dynamicStyles.js`. Pour ajouter de nouveaux styles :
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```javascript
+export function handleDynamicStyles(props, component) {
+  // Logique de conversion des styles
+}
+```
 
-### Code Splitting
+## 🎨 Composants pris en charge
+- Layout Components (Container, Grid, etc.)
+- Input Components (Button, TextField, etc.)
+- Data Display (Typography, List, etc.)
+- Navigation (AppBar, Menu, etc.)
+- Surfaces (Card, Paper, etc.)
+- Feedback Components (Alert, Snackbar, etc.)
+- Data Grid
+- Date & Time Pickers
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🤝 Contribution
+1. Fork le projet
+2. Créer une branche (`git checkout -b feature/AmazingFeature`)
+3. Commit les changements (`git commit -m 'Add some AmazingFeature'`)
+4. Push vers la branche (`git push origin feature/AmazingFeature`)
+5. Ouvrir une Pull Request
 
-### Analyzing the Bundle Size
+## ⚠️ Limitations connues
+- Certains composants complexes peuvent nécessiter des ajustements manuels
+- Les styles très personnalisés peuvent ne pas être convertis parfaitement
+- Les animations complexes nécessitent une configuration manuelle
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🗺️ Roadmap
+- [ ] Support de plus de composants MUI
+- [ ] Amélioration de la prévisualisation
+- [ ] Support des thèmes personnalisés
+- [ ] Export/Import de configurations
+- [ ] Tests automatisés
 
-### Making a Progressive Web App
+## 🔍 Debugging
+Pour le debugging, utilisez les outils de développement React et la console du navigateur. Les erreurs de conversion sont affichées dans l'interface utilisateur.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🔒 Sécurité
+- Le code est converti côté client
+- Utilisation de `dangerouslySetInnerHTML` sécurisée pour la prévisualisation
+- Validation des entrées utilisateur
 
-### Advanced Configuration
+## 📝 Notes pour les développeurs
+- Assurez-vous de maintenir la cohérence des mappings
+- Testez les conversions avec différents cas d'utilisation
+- Documentez les nouveaux composants ajoutés
+- Suivez les conventions de code existantes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🏗️ Architecture
+```
+Frontend (React)
+└── Components
+    ├── Conversion Logic
+    │   └── Component Mappings
+    ├── Preview System
+    └── UI Components
+```
 
-### Deployment
+## 📚 Ressources utiles
+- [Documentation Material-UI](https://mui.com/)
+- [Documentation Tailwind CSS](https://tailwindcss.com/)
+- [React Documentation](https://reactjs.org/)
+- [Framer Motion](https://www.framer.com/motion/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 📫 Contact
+Pour toute question ou suggestion, contactez :
+- Ayina Maerik - [LinkedIn](https://www.linkedin.com/in/ayinamaerik/)
+- Tresor Manock - [LinkedIn](https://www.linkedin.com/in/tr%C3%A9sormanock/)
 
-### `npm run build` fails to minify
+## 📄 Licence
+Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+Développé avec ❤️ par Ayina Maerik & Tresor Manock
