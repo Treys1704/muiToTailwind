@@ -17,7 +17,6 @@ function CodeConverter({inputCode, outputCode, onConvert, onInputChange }: CodeC
 
     // Fonction pour gérer la conversion
   const handleConvert = async (value: string) => {
-    // Appel à l'API Claude pour convertir le code
     setLoading(true);
     
     try {

@@ -17,7 +17,6 @@ export const convertMuiToTailwind = async (muiCode: string): Promise<string> => 
     });
 
     // Retourner le code généré
-    console.log(response);
     return response.content[0].type === "text" ? response.content[0].text : "";
   } catch (error) {
     toast.error("Une erreur s'est produite lors de la conversion: " + error);
