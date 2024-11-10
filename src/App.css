@@ -1,0 +1,88 @@
+/* styles/App.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.prose {
+    max-width: none;
+}
+
+/* Styles pour la scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4b5563;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+}
+
+/* styles/App.css */
+.preview-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.preview-content {
+    min-height: 200px;
+}
+
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    padding: 1rem;
+    background: #1a1a1a;
+    border-radius: 0.5rem;
+}
+
+/* styles/App.css */
+.preview-content {
+    @apply min-h-[100px] w-full;
+}
+
+.preview-content button {
+    @apply inline-flex items-center justify-center;
+}
+
+.preview-content input,
+.preview-content textarea {
+    @apply block w-full;
+}
+
+/* Styles supplémentaires pour les éléments prévisualisés */
+.preview-content h1,
+.preview-content h2,
+.preview-content h3,
+.preview-content h4,
+.preview-content h5,
+.preview-content h6 {
+    @apply mb-4;
+}
+
+.preview-content p {
+    @apply mb-4;
+}
+
+.preview-content button + button {
+    @apply ml-2;
+}
