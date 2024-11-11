@@ -41,7 +41,9 @@ cd muiToTailwind
 npm install
 
 # Lancer l'application
-npm start
+npm run dev
+
+# Creation de votre fichier .env avec votre secret key
 ```
 
 ### Dépendances principales
